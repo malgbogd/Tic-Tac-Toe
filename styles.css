@@ -1,0 +1,81 @@
+body {
+    background: rgb(53,92,125);
+    background: linear-gradient(90deg, rgba(53,92,125,1) 25%, rgba(192,108,132,1) 75%, rgba(248,177,149,1) 100%);
+    background-size:cover;
+    color: #cadbca;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    align-items: center;
+}
+.playerTags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: #FF847C ;
+    opacity: 60%;
+    margin: 0 0 10px 10px;
+    border-radius: 10px;
+}
+
+.square:hover {
+    opacity: 90%;
+}
+
+.player{
+    font-size: 18px;
+    margin: 10px 45px 0 42px;
+    font-family: sans-serif;
+    
+}
+
+.playerColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+button {
+    background-color:rgba(53,92,125,1) ;
+    color:#cadbca ;
+    border-style: none;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+button:hover {
+    background-color: #FF847C ;
+    color:rgba(53,92,125,1) ;
+}
+
+#newGame {
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+}
