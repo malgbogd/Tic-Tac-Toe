@@ -1,6 +1,6 @@
 body {
     background: rgb(53,92,125);
-    background: linear-gradient(90deg, rgba(53,92,125,1) 25%, rgba(192,108,132,1) 75%, rgba(248,177,149,1) 100%);
+    background: linear-gradient(90deg, rgba(53,92,125,1) 15%, rgba(192,108,132,1) 75%, rgba(248,177,149,1) 100%);
     background-size:cover;
     color: #cadbca;
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -26,14 +26,20 @@ h1 {
 .square {
     width: 100px;
     height: 100px;
-    background-color: #FF847C ;
-    opacity: 60%;
+    background-color: #d4787d ;
+    /* opacity: 60%; */
     margin: 0 0 10px 10px;
     border-radius: 10px;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:#f8e395;
 }
 
 .square:hover {
-    opacity: 90%;
+    background-color: #f5ae94 ;
 }
 
 .player{
@@ -79,3 +85,10 @@ button:hover {
     height: 30px;
     font-size: 15px;
 }
+
+footer {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+

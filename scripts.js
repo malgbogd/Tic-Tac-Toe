@@ -1,8 +1,8 @@
+let boardArray=[]
+
 const createBoard = (()=> {
 
     const DOMboard = document.getElementById("board");
-
-    let boardArray=[]
     
     for (let index = 0; index < 3; index++) {
     
@@ -17,6 +17,7 @@ const createBoard = (()=> {
 
         DOMboard.appendChild(row);      
     }
+    console.log(boardArray);
     return boardArray;
 }
 )();
@@ -36,6 +37,9 @@ const buttonName1 = document.getElementById("playerX")
 buttonName1.addEventListener("click", () => getXName());
 
 function getOName() {
+
+    const playerX = createBoard
+
     nameO = prompt("What is player O name?")
     if (nameO.length == 0) {
         buttonName2.innerHTML = "Name"
@@ -50,6 +54,38 @@ buttonName2.addEventListener("click", () => getOName());
 })();
 
 const Player = (marker) => {
-    const getMarker = () => marker
-    return getMarker;
+    let myMarker = marker
+    
+    return {myMarker};
 }
+
+const playerX = Player("X");
+const playerO = Player("O");
+let currentPlayer = playerX  
+
+const playGame = (() => {  
+    
+    boardArray.forEach(element => { element.addEventListener("click", () =>{
+        element.innerHTML = String(currentPlayer.myMarker);
+        if (String(currentPlayer.myMarker)==="X") {
+            currentPlayer = playerO;
+            document.getElementById("turn").innerHTML = "Player O turn!";
+        } else {
+            currentPlayer = playerX;
+            document.getElementById("turn").innerHTML = "Player X turn!";
+        }
+        })
+
+
+        
+        
+    });
+})();
+
+const newGame = (()=> {
+    let nwGmBtn = document.getElementById("newGame");
+    nwGmBtn.addEventListener("click", () => {boardArray.forEach(element => {element.innerHTML =""
+    currentPlayer = playerX;
+            document.getElementById("turn").innerHTML = "Player X turn!";
+})});
+})();
