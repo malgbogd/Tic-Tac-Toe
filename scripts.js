@@ -9,7 +9,7 @@ const createBoard = (()=> {
         let row = document.createElement("div");
             
         for (let index = 0; index < 3; index++) {
-              square = document.createElement("div");
+              square = document.createElement("button");
               square.className = "square"
               boardArray[boardArray.length] = square;
               row.appendChild(square);
@@ -67,25 +67,65 @@ const playGame = (() => {
     
     boardArray.forEach(element => { element.addEventListener("click", () =>{
         element.innerHTML = String(currentPlayer.myMarker);
-        if (String(currentPlayer.myMarker)==="X") {
-            currentPlayer = playerO;
-            document.getElementById("turn").innerHTML = "Player O turn!";
-        } else {
-            currentPlayer = playerX;
-            document.getElementById("turn").innerHTML = "Player X turn!";
-        }
-        })
-
-
         
-        
+            if (String(currentPlayer.myMarker)==="X") {
+                    currentPlayer = playerO;
+                    document.getElementById("turn").innerHTML = "Player O turn!";
+                } else {
+                    currentPlayer = playerX;
+                    document.getElementById("turn").innerHTML = "Player X turn!";
+                }
+            element.disabled = true;
+    
+            // Player X winning terms
+        if ( "X"==boardArray[0].innerHTML && "X"==boardArray[1].innerHTML && "X"== boardArray[2].innerHTML || 
+        "X"==boardArray[0].innerHTML && "X"== boardArray[4].innerHTML && "X"== boardArray[8].innerHTML ||
+        "X"==boardArray[0].innerHTML && "X"== boardArray[3].innerHTML && "X"== boardArray[6].innerHTML ||
+        "X"==boardArray[3].innerHTML && "X"== boardArray[4].innerHTML && "X"== boardArray[5].innerHTML ||
+        "X"==boardArray[6].innerHTML && "X"== boardArray[7].innerHTML && "X" == boardArray[8].innerHTML ||
+        "X"==boardArray[6].innerHTML && "X"== boardArray[4].innerHTML && "X"== boardArray[2].innerHTML ||
+        "X"==boardArray[1].innerHTML && "X"== boardArray[4].innerHTML && "X"== boardArray[7].innerHTML ||
+        "X"==boardArray[2].innerHTML && "X"== boardArray[5].innerHTML && "X" == boardArray[8].innerHTML ) {
+           alert("Player X won!")
+           document.getElementById("turn").innerHTML = "Player X won!";
+           boardArray.forEach(button => {button.disabled = true});
+       } 
+        // Player O winning terms
+        else if ( "O"==boardArray[0].innerHTML && "O"==boardArray[1].innerHTML && "O"== boardArray[2].innerHTML || 
+            "O"==boardArray[0].innerHTML && "O"== boardArray[4].innerHTML && "O"== boardArray[8].innerHTML ||
+            "O"==boardArray[0].innerHTML && "O"== boardArray[3].innerHTML && "O"== boardArray[6].innerHTML ||
+            "O"==boardArray[3].innerHTML && "O"== boardArray[4].innerHTML && "O"== boardArray[5].innerHTML ||
+            "O"==boardArray[6].innerHTML && "O"== boardArray[7].innerHTML && "O" == boardArray[8].innerHTML ||
+            "O"==boardArray[6].innerHTML && "O"== boardArray[4].innerHTML && "O"== boardArray[2].innerHTML ||
+            "O"==boardArray[1].innerHTML && "O"== boardArray[4].innerHTML && "O"== boardArray[7].innerHTML ||
+            "O"==boardArray[2].innerHTML && "O"== boardArray[5].innerHTML && "O" == boardArray[8].innerHTML ) {
+            alert("Player O won!")
+            document.getElementById("turn").innerHTML = "Player O won!";
+            boardArray.forEach(button => {button.disabled = true});
+       }
+       // tie terms
+       else if ( boardArray[0].innerHTML !== "" &&
+            boardArray[1].innerHTML !== "" &&
+            boardArray[2].innerHTML !== "" &&
+            boardArray[3].innerHTML !== "" &&
+            boardArray[4].innerHTML !== "" &&
+            boardArray[5].innerHTML !== "" &&
+            boardArray[6].innerHTML !== "" &&
+            boardArray[7].innerHTML !== "" &&
+            boardArray[8].innerHTML !== "" ){
+            alert("It is a tie!")
+            document.getElementById("turn").innerHTML = "It is a tie!";
+            }     
+        })      
     });
 })();
 
 const newGame = (()=> {
     let nwGmBtn = document.getElementById("newGame");
-    nwGmBtn.addEventListener("click", () => {boardArray.forEach(element => {element.innerHTML =""
-    currentPlayer = playerX;
-            document.getElementById("turn").innerHTML = "Player X turn!";
+    nwGmBtn.addEventListener("click", () => {boardArray.forEach(element => {
+        element.disabled = false;
+        element.innerHTML =""
+        currentPlayer = playerX;
+        document.getElementById("turn").innerHTML = "Player X turn!";
 })});
 })();
